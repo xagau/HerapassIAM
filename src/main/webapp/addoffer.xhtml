@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/no-template.xhtml">
+             
+    <ui:define name="title">Broadcast Page</ui:define>
+
+    <ui:define name="viewname">
+        <li>PAGES</li>
+        <li><i class="pi pi-chevron-right"></i></li>
+        <li>
+            <p:link outcome="/addoffer">ADD OFFER</p:link>
+        </li>
+    </ui:define>
+    
+    <ui:define name="content">
+        <div class="grid">
+            <div class="col">
+                <div class="card">
+                    <form method="POST" action="./BroadcastServlet">
+
+                    <h4>Add an Offer or Benefit to your Members</h4>
+                    <p>This page is used for sending offers and benefits to your members.</p>
+                    <h6><label>Subject:</label></h6>
+                    <div class="field col-12">
+                        <input type="hidden" id="challenge" name="challenge" value="y4kkAAAAAMR_fnrX36iEE"/>
+                        <input value=" " placeholder="Enter Subject"  style="width:100%;" type="text"  class="ui-inputfield ui-widget ui-state-default ui-corner-all" id="subject" name="subject"/><br/><br/>
+                        <h6><label>Message:</label></h6>
+                        <textarea id="message" name="message" style="width:100%;" class="ui-inputfield ui-inputtextarea ui-widget ui-state-default ui-corner-all  ui-inputtextarea-resizable" cols="20" rows="4" maxlength="2147483647"></textarea><br/><br/>
+                    </div>
+                    <h6><label>Offer / Benefit:</label></h6>
+                    <div class="field col-12">
+                        <input id="benefit" name="benefit" value=" " placeholder="Enter Offer / Benefit"  style="width:100%;" type="text"  class="ui-inputfield ui-widget ui-state-default ui-corner-all" /><br/><br/>
+                        <h6><label>Description:</label></h6>
+                        <textarea id="description" name="description" style="width:100%;" class="ui-inputfield ui-inputtextarea ui-widget ui-state-default ui-corner-all  ui-inputtextarea-resizable" cols="20" rows="4" maxlength="2147483647"></textarea><br/><br/>
+
+                        <div class="header-buttons align-right">
+                            <p:commandButton type="submit" icon="pi pi-pi-send" style="width:25%;" styleClass="ui-button-secondary outlined-button mr-2" value="Broadcast Message" />
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

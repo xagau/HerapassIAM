@@ -1,0 +1,163 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:po="http://primefaces.org/rain"
+                xmlns:jsp="http://java.sun.com/jsf/composite">
+
+    <div class="layout-topbar">
+        <div class="layout-topbar-wrapper">
+            <div class="layout-topbar-left">
+                <h:link id="logolink" outcome="/dashboard" styleClass="layout-topbar-logo">
+                    <p:graphicImage name="images/#{ guestPreferences.lightLogo ? 'logo-rain-white.png' : 'logo-rain-black.png'}"  library="rain-layout" />
+                </h:link>
+            </div>
+            <div class="layout-topbar-right">
+                <div class="menu-button-wrapper">
+                    <a href="#" class="menu-button">
+                        <div class="menu-button-bars">
+                            <span>one</span>
+                            <span>two</span>
+                            <span>three</span>
+                          </div>
+                          <div class="menu-button-times">
+                            <span>one</span>
+                            <span>two</span>
+                          </div>
+                    </a>
+                </div>
+                <ul class="layout-topbar-actions">
+
+
+
+                    <li class="topbar-item notifications">
+                        <!--
+                        <a href="#">
+                            <i class="topbar-icon pi pi-bell"></i>
+                        </a>
+                        <ul>
+                            <li class="layout-submenu-header">
+                                <h6 class="header-text">Notifications </h6>
+                            </li>
+                            <li>
+                                <a tabindex="0">
+                                    <i class="pi pi-shopping-cart"></i>
+                                    <div class="notification-item">
+                                        <div class="notification-summary">New Order</div>
+                                        <div class="notification-detail">You have <strong>3</strong> new orders.</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a tabindex="0">
+                                    <i class="pi pi-check-square"></i>
+                                    <div class="notification-item">
+                                        <div class="notification-summary">Withdrawn Completed</div>
+                                        <div class="notification-detail">Funds are on their way.</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a tabindex="0">
+                                    <i class="pi pi-chart-line"></i>
+                                    <div class="notification-item">
+                                        <div class="notification-summary">Monthly Reports</div>
+                                        <div class="notification-detail">New reports are ready.</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a tabindex="0">
+                                    <i class="pi pi-comment"></i>
+                                    <div class="notification-item">
+                                        <div class="notification-summary">Comments</div>
+                                        <div class="notification-detail"><strong>2</strong> new comments.</div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a tabindex="0">
+                                    <i class="pi pi-refresh"></i>
+                                    <div class="notification-item">
+                                        <div class="notification-summary">Chargeback Request</div>
+                                        <div class="notification-detail"><strong>1</strong> to review.</div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                        -->
+                    </li>
+
+                    <ui:fragment rendered="#{guestPreferences.profileMode == 'popup' ? true : false}">
+                        <li class="topbar-item user-profile">
+                            <a href="/profile.xhtml">
+                                <p:graphicImage name="images/avatar-profilemenu.png" library="rain-layout" />
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <i class="pi pi-user"></i>
+                                        <span>Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="pi pi-cog"></i>
+                                        <span>Settings</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="pi pi-envelope"></i>
+                                        <span>Messages</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="pi pi-bell"></i>
+                                        <span>Notifications</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ui:fragment>
+                 
+                </ul>
+                <a href="#" class="layout-rightpanel-button">
+                    <i class="pi pi-ellipsis-v"></i>
+                </a>
+            </div>
+        </div>
+       
+    </div>
+
+
+    <div class="menu-wrapper">
+        <div class="layout-menu-container">
+
+            <h:form id="menuform">
+                <p:menu widgetVar="RainMenuWidget">
+                    <p:submenu id="m_homepage" label="Menu [OOS R4P2]" icon="pi pi-home">
+                        <p:menuitem id="m_dashboard" value="Dashboard" icon="pi pi-home" outcome="/dashboard" />
+                            <p:submenu rendered="#{authenticator.userRole eq 'admin' || authenticator.userRole eq 'organization'}" id="m_components" label="Manage Organization" icon="pi pi-star-fill">
+                            <p:menuitem id="m_broadcast" value="Send Offer" icon="pi pi-send" outcome="/addoffer" />
+                            <p:menuitem id="m_members" value="Member List" icon="pi pi-users" outcome="/dashboard" />
+                        </p:submenu>
+
+                    <p:submenu id="m_memberview" label="Member Page" icon="pi pi-star-fill">
+                        <p:menuitem id="m_organizations" value="Organizations" icon="pi pi-building" outcome="/dashboard" />
+                        <p:menuitem id="m_invalidstate" value="Messages" icon="pi pi-users" outcome="/dashboard" />
+                        <p:menuitem id="m_button" value="See Benefits" icon="pi pi-box" outcome="/dashboard" />
+                    </p:submenu>
+
+                    <p:submenu id="m_default" label="Functions" icon="pi pi-briefcase">
+                        <p:menuitem id="m_login" value="Login" icon="pi pi-sign-in" outcome="/login" />
+                        <p:menuitem id="m_logout" value="Logout" icon="pi pi-sign-out" outcome="/logout" />
+                        <p:menuitem id="m_help" value="Help" icon="pi pi-question-circle" outcome="/help" />
+                    </p:submenu>
+                    </p:submenu>
+
+                </p:menu>
+            </h:form>
+        </div>
+    </div>
+
+</ui:composition>

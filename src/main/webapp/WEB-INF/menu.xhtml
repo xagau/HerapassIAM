@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pr="http://primefaces.org/rain">
+
+<div class="menu-wrapper">
+    <div class="layout-menu-container">
+
+        <h:form id="menuform">
+            <p:menu widgetVar="RainMenuWidget">
+                <p:submenu id="m_homepage" label="Favorites" icon="pi pi-home">
+                    <p:menuitem id="m_dashboard" value="Dashboard" icon="pi pi-home" outcome="/dashboard" />
+                </p:submenu>
+                <p:submenu id="m_components" label="Manage Organization" icon="pi pi-star-fill">
+                    <p:menuitem id="m_broadcast" value="Broadcast" icon="pi pi-send" outcome="/broadcast" />
+                    <p:menuitem id="m_members" value="Member List" icon="pi pi-users" outcome="/members" />
+                    <p:menuitem id="m_benefits" value="Manage Benefits" icon="pi pi-box" outcome="/benefits" />
+                </p:submenu>
+
+                <p:submenu id="m_memberview" label="Member Page" icon="pi pi-star-fill">
+                    <p:menuitem id="m_organizations" value="Organizations" icon="pi pi-building" outcome="/organizations" />
+                    <p:menuitem id="m_invalidstate" value="Messages" icon="pi pi-users" outcome="/messages" />
+                    <p:menuitem id="m_button" value="See Benefits" icon="pi pi-box" outcome="/benefits" />
+                </p:submenu>
+
+                <p:submenu id="m_default" label="Functions" icon="pi pi-briefcase">
+                    <p:menuitem id="m_calendar" value="Calendar" icon="pi pi-calendar-plus" outcome="/calendar" />
+                    <p:menuitem id="m_login" value="Login" icon="pi pi-sign-in" outcome="/login" />
+                    <p:menuitem id="m_logout" value="Logout" icon="pi pi-sign-out" outcome="/logout" />
+                    <p:menuitem id="m_help" value="Help" icon="pi pi-question-circle" outcome="/help" />
+                </p:submenu>
+
+            </p:menu>
+        </h:form>
+    </div>
+</div>
+
+</ui:composition>

@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/no-template.xhtml">
+             
+    <ui:define name="title">Help Page</ui:define>
+
+    <ui:define name="viewname">
+        <li>PAGES</li>
+        <li><i class="pi pi-chevron-right"></i></li>
+        <li>
+            <p:link outcome="/help">HELP</p:link>
+        </li>
+    </ui:define>
+    
+    <ui:define name="content">
+        <div class="grid">
+            <div class="col">
+                <div class="card">
+                    <h4>Help Page</h4>
+                    <p>This is your help page. [It is out of scope for MVP, but recommended for phase 2]</p>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

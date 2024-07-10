@@ -1,0 +1,7 @@
+Wed May 31 17:19:12 EDT 2023 A device has just logged into your account.
+
+The device is:Desktop
+Country:CA
+IP Address:127.0.0.1
+If you did not initiate this login contact security@HeraPass.com immediately to freeze your account from unauthorized access.
+ null newuser1685548648992@herapass.com

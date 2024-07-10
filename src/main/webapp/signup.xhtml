@@ -1,0 +1,127 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <f:facet name="first">
+
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <link rel="shortcut icon" href="#{request.contextPath}/resources/rain-layout/images/favicon.ico"
+                  type="image/x-icon">
+            </link>
+            <link rel="icon" href="#{request.contextPath}/resources/rain-layout/images/favicon.ico" type="image/x-icon">
+            </link>
+        </f:facet>
+        <title>HeraPass.com - Sign-up</title>
+        <style>
+
+        </style>
+
+    </h:head>
+
+    <h:body styleClass="login-body #{guestPreferences.inputStyleClass}">
+        <div class="login-wrapper">
+            <div class="login-panel">
+                <a href="/index.html">
+                    <p:graphicImage
+                            name="images/#{guestPreferences.scheme eq 'light' ? 'logo-dark.png' : 'logo-white.png'}"
+                            styleClass="logo" library="rain-layout"/>
+                </a>
+
+
+                <div class="login-form">
+                    <h1>Herapass.com</h1>
+                    <h3>Herapass IAM or Herapass.com uses state of Identify Access Management <br/>
+                        techology to guarentee a safe experience for corporate, small businesses and even individuals.<br/>
+                        The system is flexible and can be tailored to a clients needs.
+                    </h3>
+                    <h2>Create Your Free Account</h2>
+                    <p>Already have an account? <a href="./login.xhtml">Sign-in</a></p>
+                    <h2><font color="RED">${error}</font></h2>
+
+                    <div class="ui-messages ui-widget" id="error_message">
+                        <div class="ui-messages-error ui-corner-all">
+                            <a href="#" class="ui-messages-close" onclick="HideErroralert()" aria-label="Close">
+                                <span class="ui-icon ui-icon-close"></span>
+                            </a>
+                            <ul>
+                                <li aria-atomic="true" style="display: block;">
+                                    <span class="ui-messages-error-detail">${error}</span>
+                                    <a href='mailto:support@herapass.com'>support@herapass.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form method="POST" action="./SignupServlet">
+                    <div class="ui-field">
+                        <div class="field col-4">
+                            <label for="email">Email:</label>
+                        </div>
+                        <div class="field col-8">
+                            <input id="email" name="email"
+                                   class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                   aria-required="true" autocomplete="email" placeholder="Email"/><br/>
+                        </div>
+                        <div class="field col-4">
+                            <label for="roleType">Role:</label>
+                        </div>
+                        <div class="field col-8">
+                            <select id="roleType" name="roleType"
+                                    class="ui-inputfield ui-widget ui-state-default ui-corner-all "
+                                    aria-required="true">
+                                <option value="Member">Member</option>
+                                <option value="Organization">Organization</option>
+                            </select>
+                        </div>
+                    </div>
+                        <div class="field col-12">
+                            <input type="hidden" id="challenge" name="challenge" value="y4kkAAAAAMR_fnrX36iEE"/>
+                            <div class="field col-4">
+                                <label for="roleType">Organization Auth Code:</label>
+                            </div>
+                            <input id="orgCode" name="orgCode"
+                                   class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all "
+                                   aria-required="true" placeholder="Organization Authentication Code"/><br/>
+                            <input value="Sign-up" type="submit"
+                                   class="col-12 ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only p-f-1"
+                                   id="submit-button"/>
+                        </div>
+                    </form>
+                </div>
+                <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdNy4kkAAAAAMR_fnrX36iDsWGvqvPVsq9Azgn2"></script>
+                <script>
+                    grecaptcha.enterprise.ready(function () {
+                        grecaptcha.enterprise.execute('6LdNy4kkAAAAAMR_fnrX36iDsWGvqvPVsq9Azgn2', {action: './SignupServlet'}).then(function (token) {
+
+                        });
+                    });
+                </script>
+
+
+
+            </div>
+        </div>
+
+
+<h:outputStylesheet id="layout-scheme" name="css/layout-blue-#{guestPreferences.scheme}.css" library="rain-layout"/>
+<h:outputStylesheet name="css/primeicons.css" library="rain-layout"/>
+<h:outputStylesheet name="css/primeflex-v2.min.css" library="rain-layout"/>
+
+<script type="text/javascript">
+let error_text = String("${error}");
+if (error_text == undefined || error_text == '') {
+    document.getElementById('error_message').style.display = "none";
+} else {
+    document.getElementById('error_message').style.display = 'block';
+}
+
+function HideErroralert() {
+    document.getElementById('error_message').style.display = 'none';
+}
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.4/firebase-auth.js"></script>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+<h:outputScript library="demo" name="js/index.js"/>
+        </h:body>
+        </ui:composition>
