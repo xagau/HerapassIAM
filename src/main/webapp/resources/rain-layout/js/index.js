@@ -5,11 +5,11 @@ let facebookLoginBtn = document.getElementsByClassName('facebook-login-btn');
 let appleLoginBtn = document.getElementsByClassName('apple-login-btn');
 
 let firebaseConfig = {
-    apiKey: "AIzaSyAWTE9Md_1DPHo85HQbKC79PaKnIb24M1Q",
+    apiKey: "XXXXXXXXXXXXXXXXXXXX",
     authDomain: "genpen.firebaseapp.com",
     projectId: "genpen",
     storageBucket: "genpen.appspot.com",
-    messagingSenderId: "892113483794",
+    messagingSenderId: "XXXXXXXXXXXX",
     appId: "1:892113483794:web:351f7025e606603054c0cb"
 };
 //Initialize Firebas
